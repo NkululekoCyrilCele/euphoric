@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="ms-5 me-5 mb-5 ps-5 pe-5 pb-5">
+    <div class="card border border-white ms-5 me-5">
+        <div class="card text-white bg-danger mb-1 alert alert-dismissible alert-info">
+            <i type="button" data-bs-dismiss="alert" class="fa-solid fa-square-xmark"></i>
+            <div class="card-body" style="text-align:center;">
+                <h5 class="card-title">SPECIAL OFFER!</h5>
+                <h6 class="card-subtitle">25% Off On All Orders This Sunday.</h6>
+                <button type="button" class="btn btn-light">
+                    <a href="{% url 'book' %}" class="cta" style="color: red; font-weight: bold;">Book now</a>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="card border border-white ms-5 me-5">
+        <img src="{% static 'img/jason-leung-poI7DelFiVA-unsplash.jpg' %}" class="rounded-circle">
+        <div class="card-footer text-muted">
+            Image by:
+            <a href="https://unsplash.com/@ninjason?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jason
+                Leung
+            </a> on
+            <a
+                href="https://unsplash.com/photos/poI7DelFiVA?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
