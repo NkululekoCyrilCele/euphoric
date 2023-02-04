@@ -14,6 +14,7 @@ djangorestframework-csv = "*"
 djangorestframework-yaml = "*"
 pylint-django = "*"
 django-phonenumber-field = {extras = ["phonenumbers"], version = "*"}
+babel = "*"
 
 [dev-packages]
 autopep8 = "*"
