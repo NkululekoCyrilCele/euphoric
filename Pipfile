@@ -13,6 +13,7 @@ djangorestframework-xml = "*"
 djangorestframework-csv = "*"
 djangorestframework-yaml = "*"
 pylint-django = "*"
+django-phonenumber-field = {extras = ["phonenumbers"], version = "*"}
 
 [dev-packages]
 autopep8 = "*"

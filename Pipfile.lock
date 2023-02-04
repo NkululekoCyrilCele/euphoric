@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "36747f1983e1818d851131a66a77a45483a602b0710f84e7d8882c507ca9d432"
+            "sha256": "71ff308819a68d60a3976d6bd4ac982d5c683b59da51c41b8def3f9b617a0cff"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -277,6 +277,17 @@
             "index": "pypi",
             "version": "==4.1.6"
         },
+        "django-phonenumber-field": {
+            "extras": [
+                "phonenumbers"
+            ],
+            "hashes": [
+                "sha256:9edad2b2602af25f2aefc73c4cf53eaf7abf9e17d73c1c4372bd3052bebb26f9",
+                "sha256:de3e47b986b4959949762c16fd8fe26b3e462ef3e5531ed00950bd20c698576a"
+            ],
+            "index": "pypi",
+            "version": "==7.0.2"
+        },
         "django-templated-mail": {
             "hashes": [
                 "sha256:8db807effebb42a532622e2d142dfd453dafcd0d7794c4c3332acb90656315f9",
@@ -489,6 +500,13 @@
             "markers": "python_version >= '3.6'",
             "version": "==3.2.2"
         },
+        "phonenumbers": {
+            "hashes": [
+                "sha256:2e3fd1f3fde226b289489275517c76edf223eafd9f43a2c2c36498a44b73d4b0",
+                "sha256:6eb2faf29c19f946baf10f1c977a1f856cab90819fe7735b8e141d5407420c4a"
+            ],
+            "version": "==8.13.5"
+        },
         "platformdirs": {
             "hashes": [
                 "sha256:83c8f6d04389165de7c9b6f0c682439697887bca0aa2f1c87ef1826be3584490",
@@ -514,11 +532,11 @@
         },
         "pylint": {
             "hashes": [
-                "sha256:43ee36c9b690507ef9429ce1802bdc4dcde49454c3d665e39c23791567019c0a",
-                "sha256:55e5cf00601c4cfe2e9404355c743a14e63be85df7409da7e482ebde5f9f14a1"
+                "sha256:bad9d7c36037f6043a1e848a43004dfd5ea5ceb05815d713ba56ca4503a9fe37",
+                "sha256:ffe7fa536bb38ba35006a7c8a6d2efbfdd3d95bbf21199cad31f76b1c50aaf30"
             ],
             "markers": "python_full_version >= '3.7.2'",
-            "version": "==2.16.0"
+            "version": "==2.16.1"
         },
         "pylint-django": {
             "hashes": [

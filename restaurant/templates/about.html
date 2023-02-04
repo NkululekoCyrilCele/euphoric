@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section>
+    <article>
+        <h1>About Us</h1>
+        <div class="row">
+            <div class="column">
+                <p>Euphoric is a family-owned restaurant, based in Johanneburg, Gauteng, whose focus is to serve
+                    palatable food and drinks.</p>
+                <p>The chefs have travelled the world to learn how to prepare top-quality dishes from different
+                    cultures and thus have a broad menu for all seasons.</p>
+                <p>The restaurant have an exuberant atmosphere with top-of-the-line dishes, attracting well-dressed
+                    patrons.</p>
+                <p>The restaurant was established by Makhosazane Hlongwa who has now been joined by his family to help
+                    run it and keep it to the high-standard.</p>
+                <p>The 15 chefs, including Makhosazane, that the restaurant has have taken their time to cook and learn
+                    how to prepare top-notch recipes from all around the world.</p>
+                <p>Makhosazane's husband only specialises in marketing for the restaurant, whereas she leads the effort
+                    to expand the menu to cater for the international audience of clients.</p>
+            </div>
+            <div class="column">
+                <figure class="figure">
+                    <figcaption class="figure-caption">
+                        Euphoric owner Makhosazane Hlongwa.
+                    </figcaption>
+                    <img src="{% static 'img/jeff-siepman-kyuPjZudBKs-unsplash.jpg' %}" alt="Makhosazane Hlongwa" />
+                    Image by:
+                    <a
+                        href="https://unsplash.com/ko/@jeffsiepman?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jeff
+                        Siepman
+                    </a> on
+                    <a
+                        href="https://unsplash.com/photos/kyuPjZudBKs?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash
+                    </a>
+                </figure>
+            </div>
+        </div>
+    </article>
+</section>
+{% endblock %}
