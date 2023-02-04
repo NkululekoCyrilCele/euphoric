@@ -1,30 +1,138 @@
 {% extends 'base.html' %}
-{% load static %}
 
 {% block content %}
-<section>
-    <article>
-        <h1>Reservations</h1>
-        <div class="row">
-            <div class="column">
-                <pre id="bookings"></pre>
-            </div>
-            <div class="column">
-                <div class="videwrap">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114584.75250904531!2d27.96998368095681!3d-26.171504553828388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950c68f0406a51%3A0x238ac9d9b1d34041!2sJohannesburg!5e0!3m2!1sen!2sza!4v1675418391964!5m2!1sen!2sza"
-                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
+<h3 class="m-4">Reservations</h3>
+<div class="row">
+    <div class="col-12">
+        {% if bookings %}
+        <div class="card bg-light ms-4 me-4 mb-4">
+            <div class="card-header">Reservations Records</div>
+            <div class="card-body">
+                <p class="card-text">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr class="table-dark">
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">Reservation Date</th>
+                                <th scope="col">Reservation Slot</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for booking in bookings %}
+                            <tr class="table-dark">
+                                <td>{{ booking.first_name }}</td>
+                                <td>{{ booking.last_name }}</td>
+                                <td>{{ booking.email }}</td>
+                                <td>{{ booking.phone }}</td>
+                                <td>{{ booking.reservation_date }}</td>
+                                <td>{{ booking.reservation_slot }}</td>
+                                <td>
+                                    <button type="button" class="btn btn-success me-1"
+                                        href="{ url 'bookings' booking.id }" data-bs-toggle="modal"
+                                        data-bs-target="#myModal{{booking.id}}">
+                                        <i class="fa-sharp fa-solid fa-circle-info fa-lg"></i>
+                                    </button>
+
+                                    <!-- Modal Booking View -->
+                                    <div class="modal" id="myModal{{booking.id}}" tabindex="-1"
+                                        aria-labelledby="myModalLabel1" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content" style="background-color: white; color: brown;">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">
+                                                        Reservation for: {{ booking.first_name }}
+                                                        {{ booking.last_name }}
+                                                    </h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true"></span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <ul class="list-unstyled">
+                                                        <li>First Name:
+                                                            <strong>{{ booking.first_name }}</strong>
+                                                        </li>
+                                                        <li>Last Name:
+                                                            <strong>{{ booking.last_name }}</strong>
+                                                        </li>
+                                                        <li>Email:
+                                                            <strong>{{ booking.email }}</strong>
+                                                        </li>
+                                                        <li>Phone:
+                                                            <strong>{{ booking.phone }}</strong>
+                                                        </li>
+                                                        <li>Reservation Date:
+                                                            <strong>{{ booking.reservation_date }}</strong>
+                                                        </li>
+                                                        <li>Reservation Slot:
+                                                            <strong>{{ booking.reservation_slot }}</strong>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-primary"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <a class="btn btn-warning me-1" href="{% url 'edit' booking.id %}">
+                                        <i class="fa-solid fa-pen-to-square fa-lg"></i>
+                                    </a>
+
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                        data-bs-target="#delete{{booking.id}}">
+                                        <i class="fa-solid fa-trash fa-lg"></i>
+                                    </button>
+
+                                    <!-- Modal Delete Patient-->
+                                    <div class="modal" id="delete{{booking.id}}" tabindex="-1"
+                                        aria-labelledby="myModalLabel2" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content" style="background-color: white; color: darkred;">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">
+                                                        Reservation for: {{ booking.first_name }}
+                                                        {{ booking.last_name }}
+                                                    </h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true"></span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Are you sure you want to delete this reservation?</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <form action="{% url 'delete' booking.id %}" method="POST">
+                                                        {% csrf_token %}
+                                                        <input type="submit" class="btn btn-primary" value="Delete">
+                                                    </form>
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Cancel</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
+                </p>
             </div>
         </div>
-    </article>
-</section>
-<script>
-    const bookings = JSON.parse("{{bookings|safe}}")
-    console.log(bookings);
-    const pretty_json = JSON.stringify(bookings, null, 2)
-    document.getElementById("bookings").innerHTML = pretty_json
-</script>
+        {% else %}
+        <h5 class="alert alert-primary ms-4 me-4">No Reservation Records</h5>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}
