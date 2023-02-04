@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 
 
-from .models import Bookings
+from .models import Bookings, Menu
 from .forms import BookingForm
 from datetime import datetime
 import json
@@ -83,3 +83,10 @@ def delete(request, id):
         booking = Bookings.objects.get(pk=id)
         booking.delete()
     return HttpResponseRedirect(reverse('reservations'))
+
+
+def menu(request):
+    menu_items = Menu.objects.all()
+    return render(request, 'menu.html', {
+        'menu': menu_items
+    })
