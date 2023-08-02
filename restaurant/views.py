@@ -3,6 +3,8 @@ from django.core import serializers
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
+from django.views.decorators.csrf import csrf_exempt
+
 
 from .models import Bookings, Menu
 from .forms import BookingForm
@@ -24,6 +26,7 @@ def reservations(request):
     })
 
 
+@csrf_exempt
 def bookings(request, id):
     booking = Bookings.objects.get(pk=id)
     return HttpResponseRedirect(reverse('reservations'))
@@ -89,4 +92,14 @@ def menu(request):
     menu_items = Menu.objects.all()
     return render(request, 'menu.html', {
         'menu': menu_items
+    })
+
+
+def display_menu_item(request, pk=None):
+    if pk:
+        menu_item = Menu.objects.get(pk=pk)
+    else:
+        menu_item = ''
+    return render(request, 'menu_item.html', {
+        'menu_item': menu_item
     })

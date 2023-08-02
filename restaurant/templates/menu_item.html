@@ -1,0 +1,27 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block content%}
+<section>
+    <article>
+        <h1>Menu item</h1>
+        {% if menu_item %}
+        <span>
+            <a href="{%url 'home'%}">Home</a>/
+            <a href="{%url 'menu'%}">Menu</a>/
+            {% for item in menu_item %}
+            {{menu_item.item_name}}
+        </span>
+        <div class="row">
+            <div class="column">
+                <h2>{{menu_item.item_name}}</h2>
+                <p>{{menu_item.item_description}}</p>
+                <p>Price: ${{menu_item.item_price}}.00</p>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <h5 class="alert alert-primary ms-4 me-4">No Menu Records</h5>
+        {% endif %}
+    </article>
+</section>
+{%endblock%}
